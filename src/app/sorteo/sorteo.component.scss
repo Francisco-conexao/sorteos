@@ -1,0 +1,1014 @@
+.scrollWrapper {
+  header {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 30;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #383798;
+    text-align: center;
+    // .regresar {
+    //   float: left;
+    //   font-size: 15px;
+    //   color: #fff;
+    //   position: relative;
+    //   top: 10px;
+    //   img {
+    //     width: 20px;
+    //     margin-right: 10px;
+    //   }
+    // }
+    // .logotipo {
+    //   margin: auto;
+    //   display: block;
+    //   width: 110px;
+    // }
+    // .carrito {
+    //   position: absolute;
+    //   top: 20px;
+    //   right: 180px;
+    //   img {
+    //     width: 35px;
+    //   }
+    // }
+  }
+  .divider {
+    float: left;
+    width: 100%;
+    position: relative;
+    top: -30px;
+  }
+  .box_container {
+    position: relative;
+    box-sizing: border-box;
+    background: #180946 !important;
+    max-width: 576px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 90px;
+    padding-top: 40px;
+
+    .container-home {
+      h1 {
+        font-weight: 300;
+        font-size: 30px;
+        color: #fe901d;
+        text-align: center;
+      }
+      .subtitle {
+        font-size: 18px;
+        color: #fe7289;
+        letter-spacing: 0.64px;
+        text-align: center;
+        padding: 0px 20px;
+        float: left;
+        width: 100%;
+        margin-bottom: 60px;
+      }
+      .swiper {
+        float: left;
+        width: 100%;
+        padding: 0px 20px;
+        .swiper-slide {
+          img {
+            border-radius: 20px;
+            margin-bottom: 20px;
+          }
+          .sorteo_name {
+            font-size: 25px;
+            color: #ffffff;
+            letter-spacing: 0.31px;
+            line-height: 30px;
+            font-weight: 300;
+            margin-bottom: 25px;
+            float: left;
+            width: 100%;
+          }
+        }
+      }
+      .box_info {
+        background: #383798;
+        float: left;
+        width: 100%;
+        margin-top: 50px;
+        h2 {
+          font-size: 30px;
+          color: #3fe5e8;
+          letter-spacing: 0.38px;
+          text-align: center;
+          line-height: 30px;
+        }
+        .info_sorteo {
+          float: left;
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          padding: 20px 20px;
+          img {
+            float: left;
+            margin-bottom: 10px;
+          }
+          .info_title {
+            font-size: 22px;
+            color: #ffffff;
+            letter-spacing: 0.28px;
+            line-height: 30px;
+            font-weight: 200;
+            width: 100%;
+          }
+          p {
+            font-size: 14px;
+            color: #ffffff;
+            width: 100%;
+            font-weight: 200;
+            border: none;
+          }
+        }
+        .info_sorteo.tr {
+          float: right;
+          text-align: right;
+          justify-content: right;
+          img {
+            float: right !important;
+          }
+        }
+        .info_sorteo.ct {
+          text-align: center;
+          justify-content: center;
+        }
+      }
+    }
+    .container-cupon {
+      .box_sorteo_cupon {
+        float: left;
+        width: 100%;
+        padding: 20px 50px;
+        .img_sorteo {
+          width: 120px;
+          border-radius: 10px;
+          float: left;
+          margin-right: 10px;
+        }
+        .nombre_sorteo {
+          font-size: 20px;
+          color: #ffffff;
+          letter-spacing: 0.31px;
+          line-height: 30px;
+          width: calc(100% - 130px);
+          float: left;
+        }
+      }
+      form {
+        text-align: center;
+        padding: 30px 30px;
+        float: left;
+        width: 100%;
+        .from-group {
+          float: left;
+          width: 100%;
+          border: none;
+          margin-bottom: 25px;
+          input {
+            text-align: center;
+            font-size: 18px;
+          }
+        }
+        .label_input {
+          font-size: 18px;
+          color: #fff;
+          float: left;
+          width: 100%;
+          margin-bottom: 5px;
+        }
+        .info_input_cupon {
+          color: #fff;
+          float: left;
+          width: 100%;
+          font-size: 11px;
+          margin-top: 10px;
+        }
+      }
+    }
+    .container-paquete {
+      .box_sorteo_cupon {
+        float: left;
+        width: 100%;
+        padding: 20px 50px;
+        .img_sorteo {
+          width: 120px;
+          border-radius: 10px;
+          float: left;
+          margin-right: 10px;
+        }
+        .nombre_sorteo {
+          font-size: 20px;
+          color: #ffffff;
+          letter-spacing: 0.31px;
+          line-height: 30px;
+          width: calc(100% - 130px);
+          float: left;
+        }
+      }
+      .box_boletos_canjeado {
+        float: left;
+        width: 100%;
+        padding-top: 15px;
+        .text_canjeado {
+          font-size: 18px;
+          color: #ffffff;
+          letter-spacing: 0.64px;
+          text-align: center;
+        }
+        .boletos_canjeados {
+          float: left;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          img {
+            margin-right: 20px;
+            width: 70px;
+          }
+          strong {
+            font-size: 25px;
+            color: #ffffff;
+            letter-spacing: 0.89px;
+          }
+        }
+      }
+      .box_boletos_select {
+        float: left;
+        width: 100%;
+        background: #383798;
+        margin-top: 50px;
+        padding: 15px 0px;
+        .boletos_faltantes {
+          font-size: 22px;
+          color: #ffffff;
+          letter-spacing: 0.28px;
+          line-height: 30px;
+          float: left;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          padding: 0px 50px;
+          text-align: center;
+          strong {
+            font-size: 60px;
+            color: #3fe5e8;
+            letter-spacing: 0.75px;
+            text-align: center;
+            line-height: 30px;
+            width: 100%;
+          }
+          i {
+            font-style: normal;
+            width: 100%;
+          }
+        }
+        .box_maquinita {
+          float: left;
+          width: 100%;
+          background: #3fe5e8;
+          padding: 15px 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 30px;
+          margin-top: 15px;
+          .img_gatito {
+            margin-right: 15px;
+          }
+          span {
+            font-size: 19px;
+            color: #180946;
+            font-weight: 700;
+          }
+        }
+
+        .box_buscar {
+          float: left;
+          width: 100%;
+          padding: 0px 40px;
+          position: relative;
+          .img_buscar {
+            position: absolute;
+            width: 25px;
+            top: 0px;
+            bottom: 0px;
+            margin: auto;
+            left: 50px;
+          }
+          input {
+            border-radius: 8px;
+            padding: 10px 15px 10px 50px;
+            text-align: center;
+            font-size: 18px;
+          }
+        }
+        .box_boletos {
+          float: left;
+          width: 100%;
+          text-align: center;
+          padding-top: 20px;
+          z-index: 10;
+          position: relative;
+          padding-bottom: 50px;
+          .boleto {
+            width: 95px;
+            background: #fff;
+            padding: 10px 5px;
+            margin: 10px 10px;
+            color: #000;
+            font-size: 20px;
+            text-align: center;
+            font-weight: 700;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+          }
+          .boleto.active {
+            background: #3fe5e8;
+            color: #fff;
+          }
+          .boleto.vendido {
+            background: #180946;
+            color: #180946;
+          }
+        }
+      }
+    }
+    .container-carrito {
+      .box_sorteo_cupon {
+        float: left;
+        width: 100%;
+        padding: 20px 50px;
+        .img_sorteo {
+          width: 120px;
+          border-radius: 10px;
+          float: left;
+          margin-right: 10px;
+        }
+        .nombre_sorteo {
+          font-size: 20px;
+          color: #ffffff;
+          letter-spacing: 0.31px;
+          line-height: 30px;
+          width: calc(100% - 130px);
+          float: left;
+        }
+      }
+      .box_boletos_canjeado {
+        float: left;
+        width: 100%;
+        padding-top: 15px;
+        .text_canjeado {
+          font-size: 18px;
+          color: #ffffff;
+          letter-spacing: 0.64px;
+          text-align: center;
+        }
+        .boletos_canjeados {
+          float: left;
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 15px;
+          img {
+            margin-right: 20px;
+            width: 70px;
+          }
+          strong {
+            font-size: 25px;
+            color: #ffffff;
+            letter-spacing: 0.89px;
+          }
+          .box_boletos {
+            float: left;
+            width: 100%;
+            flex-basis: 100%;
+            text-align: center;
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            span {
+              color: #fff;
+              padding: 5px 10px;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+    .container-paquetes {
+      float: left;
+      width: 100%;
+      background: #ac92ec;
+      .box_sorteo_cupon {
+        float: left;
+        width: 100%;
+        padding: 20px 50px;
+        .img_sorteo {
+          width: 120px;
+          border-radius: 10px;
+          float: left;
+          margin-right: 10px;
+        }
+        .nombre_sorteo {
+          font-size: 20px;
+          color: #ffffff;
+          letter-spacing: 0.31px;
+          line-height: 30px;
+          width: calc(100% - 130px);
+          float: left;
+        }
+      }
+      .box_boletos_canjeado {
+        float: left;
+        width: 100%;
+        margin-bottom: 50px;
+      }
+      .text_canjeado {
+        font-size: 18px;
+        color: #ffffff;
+        letter-spacing: 0.64px;
+        text-align: center;
+      }
+      .boletos_canjeados {
+        float: left;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        flex-wrap: nowrap;
+        padding: 0px 40px;
+        .check {
+          width: 20px;
+          margin-right: 15px;
+        }
+        .ticket {
+          margin-right: 20px;
+          width: 50px;
+        }
+        strong {
+          font-size: 18px;
+          color: #ffffff;
+          letter-spacing: 0.89px;
+          font-weight: 300;
+        }
+      }
+    }
+    .menu {
+      float: left;
+      width: 100%;
+      padding: 30px 0px;
+      ul {
+        list-style: none;
+        float: left;
+        width: 100%;
+        li {
+          float: right;
+          margin-left: 40px;
+          font-size: 20px;
+          color: #fff;
+          font-weight: 100;
+          padding-bottom: 5px;
+        }
+        .active {
+          border-bottom: 4px solid #0ad3d1;
+        }
+      }
+    }
+
+    p {
+      color: #fff;
+      float: left;
+      width: 100%;
+    }
+    h2 {
+      float: left;
+      width: 100%;
+      color: #fff;
+      font-weight: 300;
+      font-size: 20px;
+      padding-top: 20px;
+      padding-left: 30px;
+    }
+    h3 {
+      float: left;
+      width: 100%;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 300;
+      border-top: 1px solid #fff;
+      padding-top: 30px;
+      padding-left: 30px;
+      margin-bottom: 40px;
+    }
+
+    .box_paquetes {
+      float: left;
+      width: 100%;
+      margin-bottom: 30px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-content: center;
+      justify-content: center;
+      align-items: center;
+      .paquete {
+        float: left;
+        background: #d8d8d8;
+        border-radius: 6px;
+        margin: 15px;
+        position: relative;
+        cursor: pointer;
+        .numero {
+          float: left;
+          background-image: linear-gradient(180deg, #bd2fa2 0%, #23ada0 100%);
+          border-radius: 6px 0 0 6px;
+          color: #fff;
+          font-size: 35px;
+          padding: 42px 15px;
+          width: 50px;
+          text-align: center;
+          height: 105px;
+        }
+        .rosa {
+          background-image: linear-gradient(
+            225deg,
+            #32c5ff 0%,
+            #b620e0 51%,
+            #f7b500 100%
+          );
+        }
+        .verde {
+          background-image: linear-gradient(180deg, #6dd400 0%, #f7b500 100%);
+        }
+        .boleto {
+          float: left;
+          color: #757575;
+          font-size: 35px;
+          font-weight: 700;
+          padding: 15px;
+          width: calc(100% - 50px);
+        }
+        .precio {
+          color: #757575;
+          font-size: 11px;
+          font-weight: 700;
+          margin-left: 15px;
+          float: left;
+          width: 120px;
+          strong {
+            float: left;
+            width: 100%;
+            font-size: 15px;
+            font-weight: 900;
+          }
+          img {
+            width: 21px;
+            margin-right: 5px;
+            position: relative;
+            top: -2px;
+          }
+        }
+        .fecha {
+          color: #757575;
+          font-size: 11px;
+          font-weight: 700;
+          margin-left: 15px;
+          float: left;
+          width: 140px;
+          strong {
+            float: left;
+            width: 100%;
+            font-size: 15px;
+            font-weight: 900;
+          }
+          img {
+            width: 21px;
+            margin-right: 5px;
+            position: relative;
+            top: -2px;
+          }
+        }
+        .check {
+          position: absolute;
+          width: 30px;
+          height: 30px;
+          right: 10px;
+          top: 10px;
+          background: #fff;
+          border: 2px solid #979797;
+          border-radius: 100%;
+        }
+      }
+      .paquete.active {
+        .check {
+          background: #757575;
+        }
+      }
+    }
+    .btn_maquinita {
+      background: #0ad3d1;
+      margin: auto;
+      display: block;
+      margin-bottom: 60px;
+      font-weight: 700;
+      padding: 10px 30px;
+      border-radius: 5px;
+      position: relative;
+      font-size: 18px;
+      height: auto;
+      img {
+        position: absolute;
+        width: 60px;
+        right: -45px;
+        top: -10px;
+      }
+    }
+    .box_buscar {
+      .boletosSelec {
+        float: left;
+        width: 100%;
+        font-size: 20px;
+        text-align: left;
+        i {
+          border: 1px solid #c9c9c9;
+          font-style: initial;
+          border-radius: 5px;
+          padding: 5px 15px;
+          margin: 0px 10px;
+        }
+      }
+      .buscar {
+        float: left;
+        margin-bottom: 0px;
+        border-radius: 0px;
+      }
+      .btn {
+        margin: auto;
+        float: right;
+        border-radius: 5px;
+        background: #3d3b50;
+        color: #fff;
+        font-size: 16px;
+        height: 40px;
+        position: relative;
+        top: -10px;
+      }
+    }
+    .btn_pagar {
+      margin: auto;
+      float: left;
+      width: 200px;
+      border-radius: 30px;
+      background: var(--rosa);
+      color: #fff;
+      font-size: 16px;
+      height: 40px;
+      display: block;
+    }
+
+    .box_boletosSelect {
+      float: left;
+      width: 100%;
+      margin-bottom: 15px;
+      margin-top: 15px;
+      .boleto_select {
+        text-align: center;
+        float: left;
+        width: 100%;
+        font-size: 18px;
+        padding: 10px 20px;
+        color: #fff;
+      }
+      .boleto {
+        width: 90px;
+        background: none;
+        padding: 5px 5px;
+        margin: 5px 5px;
+        border-radius: 30px;
+        color: #000;
+        font-size: 18px;
+        text-align: center;
+        font-weight: 700;
+        float: left;
+        cursor: pointer;
+        img {
+          width: 20px;
+          margin-left: 0px;
+          position: relative;
+          top: -1px;
+        }
+      }
+      .boleto.active {
+        background: none;
+        color: #fff;
+      }
+    }
+  }
+  .blanco {
+    background: #ffff !important;
+    padding-top: 0px;
+  }
+}
+.modal-header {
+  background: var(--rosa);
+  text-align: center;
+  color: #fff;
+  h4 {
+    width: 100%;
+    font-size: 25px;
+    font-weight: 600;
+  }
+}
+.modal-body {
+  background: #fff;
+  .form-group {
+    position: relative;
+    z-index: 1;
+    label {
+      text-align: center;
+      float: left;
+      width: 100%;
+      font-size: 20px;
+    }
+    select {
+      font-size: 20px;
+      text-align: center;
+      width: 180px;
+      margin: auto;
+    }
+  }
+  .animation {
+    margin: auto;
+    width: 100%;
+    position: relative;
+    z-index: 0;
+  }
+  .btn_generar {
+    text-align: center;
+    float: left;
+    width: 100%;
+    font-size: 22px;
+    padding: 20px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  .box_boletosSelect {
+    float: left;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: -95px;
+    z-index: 1;
+    position: relative;
+    .boleto {
+      width: 90px;
+      background: rgb(220, 220, 220);
+      padding: 5px 5px;
+      margin: 5px 5px;
+      border-radius: 30px;
+      color: #000;
+      font-size: 18px;
+      text-align: center;
+      font-weight: 700;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      img {
+        width: 20px;
+        margin-left: 5px;
+      }
+    }
+    .active {
+      background: var(--rosa);
+      color: #fff;
+    }
+  }
+
+  .btn_confirmar {
+    background: var(--rosa);
+    color: #fff;
+    border-radius: 30px;
+    padding: 10px 30px;
+    margin: auto;
+    display: block;
+    margin-top: 20px;
+  }
+  .text {
+    text-align: center;
+    width: 100%;
+    float: left;
+    margin-top: 15px;
+  }
+  .datosCliente {
+    label {
+      font-size: 16px;
+      margin-bottom: 0px;
+      margin-top: 15px;
+    }
+    .form-group {
+      margin-bottom: 10px;
+      text-align: center !important;
+    }
+  }
+}
+.cuponUso {
+  float: right;
+  color: #fff;
+  margin-right: 20px;
+  background: #c92e64;
+  padding: 9px 22px;
+  margin-top: -10px;
+  border-radius: 30px;
+  font-size: 14px;
+}
+.carousel {
+  margin-bottom: 40px;
+  .carousel-indicators {
+    bottom: -40px;
+  }
+  .carousel-control-prev {
+    left: -120px;
+  }
+  .carousel-control-next {
+    right: -120px;
+  }
+  .carousel-control-next-icon,
+  .carousel-control-prev-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+.sorteos {
+  padding-bottom: 0px;
+  border-radius: 10px;
+  cursor: pointer;
+  img {
+    border-radius: 10px;
+  }
+  .nombre {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px 20px;
+    margin: 0px;
+  }
+  .check {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 10px;
+    bottom: 8px;
+    margin: auto;
+    background: #fff;
+    border: 2px solid #979797;
+    border-radius: 100%;
+  }
+  .check.active {
+    background: #757575;
+  }
+}
+
+.modalCupon {
+  h4 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+  }
+  p {
+    text-align: center;
+  }
+  input {
+    text-align: center;
+  }
+  img {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+}
+.modalCarrito {
+  h4 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+  }
+  p {
+    text-align: center;
+  }
+  ul {
+    list-style: none;
+    padding: 0px;
+    li {
+      float: left;
+      padding: 10px;
+      border: 1px solid #979797;
+      margin-bottom: 10px;
+      width: 100%;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+      .box_boletos {
+        float: left;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        span {
+          margin: 3px 2px;
+          color: var(--rosa);
+          float: left;
+          text-align: center;
+          background: #dee2e6;
+          border-radius: 30px;
+          padding: 1px 7px;
+        }
+      }
+      .eliminar {
+        position: absolute;
+        right: -10px;
+        top: -10px;
+        width: 22px;
+      }
+    }
+  }
+}
+.box_maquinita_modal {
+  background: #3fe5e8;
+  float: left;
+  width: 100%;
+  padding: 0px 20px 15px 20px;
+  text-align: center;
+  margin-bottom: 30px;
+  .gatito_modal {
+    width: 100px;
+    float: left;
+  }
+  .btn_generar {
+    background: #da5051;
+    color: #fff;
+    border-radius: 12px;
+    padding: 10px 30px;
+    height: auto;
+    float: left;
+    width: fit-content;
+    font-size: 16px;
+    margin: 10px 0px 0px 18px;
+    font-weight: 200;
+    strong {
+      font-size: 22px;
+    }
+  }
+
+  .box_boletosSelect {
+    margin: 0px;
+    .boleto_modal {
+      float: left;
+      width: 100%;
+      background: none;
+      color: #000;
+      font-size: 18px;
+      padding: 0px 0px;
+    }
+  }
+  .btn_confirmar {
+    background: #9424d5;
+    color: #fff;
+    border-radius: 12px;
+    padding: 10px 30px;
+    margin: auto;
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+    font-size: 18px;
+    height: auto;
+  }
+}
+.btn_agregar_carrito {
+  font-size: 16px;
+  color: #180946;
+  letter-spacing: 0.5px;
+  line-height: 25px;
+  background: #ffce54;
+  border-radius: 12px;
+  text-align: center;
+  margin: auto;
+  display: block;
+  margin-bottom: 30px;
+  height: auto;
+  padding: 10px 80px;
+}

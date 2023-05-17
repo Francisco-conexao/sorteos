@@ -1,0 +1,557 @@
+<div class="scrollWrapper">
+  <!-- <div class="container-sm">
+    <header>
+      <span class="carrito" (click)="abrirModalCarrito(modalCarrito)"
+        ><img src="assets/carrito.png" alt="carrito"
+      /></span>
+    </header>
+  </div> -->
+  <header>
+    <img class="logotipo" src="assets/logotipo.png" alt="logotipo" />
+  </header>
+  <div class="box_container">
+    <!-- <div class="menu">
+      <ul>
+        <li>Tienda</li>
+        <li>Productos</li>
+        <li class="active">Sorteo</li>
+      </ul>
+    </div> -->
+    <div class="container-home" *ngIf="views == 'home'">
+      <h1>La Suerte está en el Aire</h1>
+      <span class="subtitle">
+        Lucky iPhone es la forma divertida de estrenar iPhone entre amigos.
+      </span>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div
+            class="swiper-slide"
+            *ngFor="let sorteo of sorteos; let i = index"
+          >
+            <img class="card-img-top" [src]="sorteo.img" />
+            <span class="sorteo_name">{{ sorteo.nombre }}</span>
+            <button class="btn btn-primary" (click)="selecSorteo(sorteo)">
+              Adquiere tus Boletos
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="box_info">
+        <h2>Conoce Nuestros<br />Sorteos</h2>
+        <div class="info_sorteo">
+          <img src="assets/sorteos.png" alt="sorteos" />
+          <span class="info_title">¿Cómo se elige a los<br />ganadores?</span>
+          <p>
+            Todos nuestros sorteos se realizan en base a la Lotería Nacional
+            para la Asistencia Pública Mexicana.
+          </p>
+        </div>
+        <div class="info_sorteo tr">
+          <img src="assets/ticket.png" alt="ticket" />
+          <span class="info_title"
+            >¿Y si el Boleto Ganador<br />NO se Vendió?</span
+          >
+          <p>
+            Elejiremos un nuevo ganador realizando la misma dinámica en otra
+            fecha cercana (Descuida, te mantendremos informado en cada sorteo
+            que participes quienes son los ganadores).
+          </p>
+        </div>
+        <div class="info_sorteo">
+          <img src="assets/instagram-live.png" alt="instagram live" />
+          <span class="info_title">¿Dónde se publican los ganadores?</span>
+          <p>
+            Como los buenos amigos, siempre estamos en contacto en nuestras
+            redes sociales oficiales. Además de transmitir las premiaciones en
+            vivo con la Lotería Nacional… así como la entrega de los premios a
+            los ganadores.
+          </p>
+        </div>
+        <div class="info_sorteo ct">
+          <img src="assets/hands.png" alt="manos" />
+          <span class="info_title">¿Aún tienes dudas?</span>
+          <p>
+            ¡No te preocupes! Déjanos un mensaje en nuestras redes sociales y un
+            Lucky Friend se pondrá en contacto contigo para resolverlas.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="container-cupon" *ngIf="views == 'cupon'">
+      <div class="box_sorteo_cupon">
+        <img class="img_sorteo" [src]="sorteoSelect.img" />
+        <span class="nombre_sorteo">{{ sorteoSelect.nombre }}</span>
+      </div>
+
+      <form #form="ngForm" class="datosCliente">
+        <span class="label_input">¿Tienes Algún Cupón?</span>
+        <div class="from-group">
+          <input
+            class="form-control"
+            type="text"
+            [(ngModel)]="cupon"
+            name="Cupon"
+            placeholder="cupon"
+            required
+          />
+          <span class="info_input_cupon"
+            >Si tienes algún cupón debes ingresarlo ahora. En caso de no tenerlo
+            solo presiona “Continuar”.</span
+          >
+        </div>
+        <span class="label_input">Ingresa tu número de whatsapp</span>
+        <div class="from-group">
+          <input
+            class="form-control"
+            type="text"
+            [(ngModel)]="whastapp"
+            name="Whastapp"
+            placeholder="whastapp"
+            maxlength="10"
+            minlength="10"
+            required
+          />
+          <span class="info_input_cupon"
+            >El número de whatsapp es tu seguro para reclamar el premio en caso
+            de ser ganador y es el medio de contacto oficial para dar
+            seguimiento a tu pedido.</span
+          >
+        </div>
+        <button
+          class="btn btn_continuar"
+          (click)="ValidarCupon()"
+          [disabled]="!form.valid"
+        >
+          Continuar <img src="assets/icons/flecha.png" />
+        </button>
+      </form>
+    </div>
+    <div class="container-paquete" *ngIf="views == 'paquete'">
+      <div class="box_sorteo_cupon">
+        <img class="img_sorteo" [src]="sorteoSelect.img" />
+        <span class="nombre_sorteo">{{ sorteoSelect.nombre }}</span>
+      </div>
+      <div class="box_boletos_canjeado">
+        <p class="text_canjeado">Estos son tus bloques de boletos</p>
+        <span class="boletos_canjeados">
+          <img src="assets/ticket.png" alt="ticket" />
+          <strong>{{ paquete.boletos }} Boletos</strong>
+        </span>
+      </div>
+      <div class="box_boletos_select">
+        <img class="divider" src="assets/divider.png" alt="divider" />
+        <span class="boletos_faltantes">
+          <i>Faltan</i>
+          <strong>{{ paquete.boletos - boletosSelect.length }}</strong>
+          <i>Boletos por Seleccionar</i>
+        </span>
+        <div class="box_boletosSelect" *ngIf="boletosSelect?.length > 0">
+          <span class="boleto_select">Boletos seleccionados:</span>
+          <span
+            class="boleto {{ boleto.select ? 'active' : '' }}"
+            *ngFor="let boleto of boletosSelect"
+          >
+            {{ boleto.num }}
+            <img src="assets/icons/omitir.png" (click)="selecNum(boleto)" />
+          </span>
+          <!-- <button class="btn btn_pagar">Pagar</button> -->
+        </div>
+        <div
+          class="box_maquinita"
+          (click)="generarBoletos(1)"
+          [style]="boletosSelectRandom?.length > 0 ? 'margin-bottom:0px' : ''"
+        >
+          <img class="img_gatito" src="assets/gatito.png" />
+          <span>Pedir un Boleto al<br />Gatito de la Suerte</span>
+        </div>
+        <div
+          class="box_maquinita_modal"
+          *ngIf="boletosSelectRandom?.length > 0"
+        >
+          <div class="box_boletosSelect">
+            <span
+              class="boleto_modal active"
+              *ngFor="let boleto of boletosSelectRandom"
+            >
+              Lucky Cat sugirió: <strong>{{ boleto.num }}</strong>
+            </span>
+          </div>
+          <button
+            class="btn btn_confirmar"
+            (click)="losQuiero()"
+            [disabled]="boletosSelectRandom?.length <= 0"
+            *ngIf="boletosSelect.length != paquete.boletos"
+          >
+            Agregar Boleto
+          </button>
+        </div>
+        <!-- <button
+          *ngIf="!cuponValido.cupon"
+          class="btn"
+          (click)="abrirModalCompra(pago)"
+          [disabled]="boletosSelect.length != paquete.boletos"
+        >
+          Comprar Boletos
+        </button> -->
+        <button
+          class="btn btn_agregar_carrito"
+          (click)="agregarCarritoCupon()"
+          [disabled]="boletosSelect.length != paquete.boletos"
+        >
+          Agregar boletos<br />seleccionados
+        </button>
+        <div class="box_buscar">
+          <img class="img_buscar" src="assets/icons/buscar.png" alt="buscar" />
+          <input
+            type="text"
+            class="form-control buscar"
+            (ngModelChange)="getItems($event)"
+            [(ngModel)]="buscar"
+            name="buscar"
+            placeholder="Buscar Número..."
+          />
+        </div>
+        <div class="box_boletos">
+          <span
+            class="boleto"
+            [ngClass]="{ active: boleto.select, vendido: boleto.vendido }"
+            *ngFor="let boleto of boletos"
+            (click)="selecNum(boleto)"
+            >{{ boleto.num }}</span
+          >
+        </div>
+      </div>
+    </div>
+    <div class="container-carrito" *ngIf="views == 'carrito'">
+      <div class="box_sorteo_cupon">
+        <img class="img_sorteo" [src]="sorteoSelect.img" />
+        <span class="nombre_sorteo">{{ sorteoSelect.nombre }}</span>
+      </div>
+      <div class="box_boletos_canjeado">
+        <p class="text_canjeado">Estos son tus bloques de boletos</p>
+        <span
+          class="boletos_canjeados"
+          *ngFor="let carro of carrito; let i = index"
+        >
+          <img src="assets/ticket.png" alt="ticket" />
+          <strong>{{ carro.numBoletos }} Boletos</strong>
+          <div class="box_boletos">
+            <span *ngFor="let boleto of carro.boletos">*{{ boleto.num }}</span>
+          </div>
+        </span>
+      </div>
+      <button class="btn btn_agregar_carrito" (click)="views = 'paquetes'">
+        Comprar más Boletos
+      </button>
+    </div>
+    <div class="container-paquetes" *ngIf="views == 'paquetes'">
+      <div class="box_sorteo_cupon">
+        <img class="img_sorteo" [src]="sorteoSelect.img" />
+        <span class="nombre_sorteo">{{ sorteoSelect.nombre }}</span>
+      </div>
+      <div class="box_boletos_canjeado">
+        <p class="text_canjeado">
+          Selecciona el bloque de boletos que<br />deseas
+        </p>
+        <span
+          class="boletos_canjeados"
+          *ngFor="let paquete of paquetes"
+          (click)="elegirPaquete(paquete)"
+        >
+          <img
+            class="check"
+            src="assets/icons/check{{ paquete.estatus == 1 ? 'A' : '' }}.png"
+            alt="check"
+          />
+          <img class="ticket" src="assets/ticket.png" alt="ticket" />
+          <strong
+            >{{ paquete.boletos }} Boletos x
+            {{ paquete.precio | currency }}</strong
+          >
+        </span>
+      </div>
+      <button class="btn btn_agregar_carrito" (click)="views = 'paquete'">
+        Comprar Boletos
+      </button>
+    </div>
+    <!-- <div
+      id="carouselSorteos"
+      class="carousel slide"
+      data-ride="carousel"
+      data-interval="false"
+    >
+      <div class="carousel-inner" role="listbox">
+        <div
+          class="carousel-item {{ i == 0 ? 'active' : '' }}"
+          *ngFor="let sorteo of sorteos; let i = index"
+        >
+          <div class="row">
+            <div class="col-md-12" (click)="selecSorteo(sorteo)">
+              <div class="card mb-2 sorteos">
+                <img class="card-img-top" [src]="sorteo.img" />
+                <h4 class="nombre">{{ sorteo.nombre }}</h4>
+                <span class="check {{ sorteo.select ? 'active' : '' }}"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    <!-- <ul class="sorteos">
+            <li *ngFor="let sorteo of sorteos" (click)="selecSorteo(sorteo)">
+                <span class="nombre">{{sorteo.nombre}}</span>
+                <span class="check {{(sorteo.select)?'active':''}}"></span>
+            </li>
+        </ul> -->
+
+    <!-- <h2>Paquetes de boletos:</h2>
+    <div class="box_paquetes">
+      <div
+        class="paquete {{ paquete.estatus == 1 ? 'active' : '' }}"
+        (click)="elegirPaquete(paquete)"
+        *ngFor="let paquete of paquetes"
+      >
+        <span class="numero {{ paquete.color }}">{{ paquete.boletos }}</span>
+        <span class="boleto">BOLETOS</span>
+        <span class="precio"
+          >PRECIO
+          <strong
+            ><img src="assets/precio.png" />{{
+              paquete.precio | currency
+            }}</strong
+          ></span
+        >
+        <span class="fecha"
+          >FECHA SORTEO
+          <strong
+            ><img src="assets/fecha.png" />{{
+              paquete.fecha | date : "d-MM-yyyy"
+            }}</strong
+          ></span
+        >
+        <span class="check"></span>
+      </div>
+    </div> -->
+    <div class="box_container blanco">
+      <!-- <div class="box_boletos">
+      <div class="box_buscar">
+        <span class="boletosSelec">
+          Tienes <i>{{ boletosSelect.length }}</i> boleto{{
+            boletosSelect.length > 1 ? "s" : ""
+          }}
+          seleccionados
+          <button
+            style="margin-left: 10px; background: #c92d64"
+            class="btn"
+            (click)="abrirModalCupon(modalCupon)"
+          >
+            Tienes un cupon
+          </button>
+
+          <button
+            *ngIf="!cuponValido.cupon"
+            class="btn"
+            (click)="agregarCarrito()"
+            [disabled]="boletosSelect.length != paquete.boletos"
+          >
+            Agregar a carrito
+          </button>
+
+          <span class="cuponUso" *ngIf="cuponValido.cupon"
+            >Cupón en uso: {{ cuponValido.cupon }} Boletos:{{
+              cuponValido.boletos
+            }}</span
+          >
+        </span>
+      </div>
+      
+    </div>
+  </div> -->
+    </div>
+    <!-- MODALS -->
+    <ng-template #content let-modal modal-sm modalMaquinita>
+      <div class="modal-body">
+        <img class="gatito_modal" src="assets/gatito.png" />
+        <button class="btn btn_generar" (click)="generarBoletos(1)">
+          Pedir un boleto al<br /><strong>Gatito de la suerte</strong>
+        </button>
+        <div class="box_boletosSelect">
+          <span
+            class="boleto_modal active"
+            *ngFor="let boleto of boletosSelectRandom"
+          >
+            Lucky Cat sugirió: <strong>{{ boleto.num }}</strong>
+          </span>
+        </div>
+        <button
+          class="btn btn_confirmar"
+          (click)="losQuiero()"
+          [disabled]="boletosSelectRandom?.length <= 0"
+        >
+          Agregar Boleto
+        </button>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn_cancelar" (click)="modal.close('Close click')">Cancelar</button>
+        <button type="submit" class="btn btn-sm btn_aceptar" (click)="upload()" [disabled]="archivo == null">LOS QUIERO!</button>
+    </div> -->
+    </ng-template>
+
+    <ng-template #pago let-modal modal-sm>
+      <div class="modal-header">
+        <h4 class="modal-title">Datos para comprar</h4>
+      </div>
+      <div class="modal-body">
+        <form #form="ngForm" class="datosCliente">
+          <div class="from-group">
+            <label>Nombre completo</label>
+            <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="cliente.nombre"
+              name="nombre"
+              required
+            />
+          </div>
+          <div class="from-group">
+            <label>Celular (10 digitos)</label>
+            <input
+              class="form-control"
+              type="tel"
+              [(ngModel)]="cliente.celular"
+              name="celular"
+              maxlength="10"
+              required
+            />
+          </div>
+          <div class="from-group">
+            <label>Email</label>
+            <input
+              class="form-control"
+              type="email"
+              [(ngModel)]="cliente.email"
+              name="email"
+              required
+            />
+          </div>
+          <div class="from-group">
+            <label>Estado</label>
+            <select
+              class="form-control"
+              [(ngModel)]="cliente.estado"
+              name="estado"
+              required
+            >
+              <option disabled selected>SELECCIONA ESTADO</option>
+              <option value="ESTADOS UNIDOS">ESTADOS UNIDOS</option>
+              <option value="OTRO PAIS">OTRO PAIS</option>
+              <option value="AGUASCALIENTES">AGUASCALIENTES</option>
+              <option value="BAJA CALIFORNIA">BAJA CALIFORNIA</option>
+              <option value="BAJA CALIFORNIA SUR">BAJA CALIFORNIA SUR</option>
+              <option value="CAMPECHE">CAMPECHE</option>
+              <option value="CIUDAD DE MÉXICO">CIUDAD DE MÉXICO</option>
+              <option value="COAHUILA">COAHUILA</option>
+              <option value="COLIMA">COLIMA</option>
+              <option value="CHIAPAS">CHIAPAS</option>
+              <option value="CHIHUAHUA">CHIHUAHUA</option>
+              <option value="DURANGO">DURANGO</option>
+              <option value="ESTADO DE MÉXICO">ESTADO DE MÉXICO</option>
+              <option value="GUANAJUATO">GUANAJUATO</option>
+              <option value="GUERRERO">GUERRERO</option>
+              <option value="HIDALGO">HIDALGO</option>
+              <option value="JALISCO">JALISCO</option>
+              <option value="MICHOACÁN">MICHOACÁN</option>
+              <option value="MORELOS">MORELOS</option>
+              <option value="NAYARIT">NAYARIT</option>
+              <option value="NUEVO LEÓN">NUEVO LEÓN</option>
+              <option value="OAXACA">OAXACA</option>
+              <option value="PUEBLA">PUEBLA</option>
+              <option value="QUERÉTARO">QUERÉTARO</option>
+              <option value="QUINTANA ROO">QUINTANA ROO</option>
+              <option value="SAN LUIS POTOSÍ">SAN LUIS POTOSÍ</option>
+              <option value="SINALOA">SINALOA</option>
+              <option value="SONORA">SONORA</option>
+              <option value="TABASCO">TABASCO</option>
+              <option value="TAMAULIPAS">TAMAULIPAS</option>
+              <option value="TLAXCALA">TLAXCALA</option>
+              <option value="VERACRUZ">VERACRUZ</option>
+              <option value="YUCATÁN">YUCATÁN</option>
+              <option value="ZACATECAS">ZACATECAS</option>
+            </select>
+          </div>
+        </form>
+        <p *ngIf="!cuponValido.cupon" class="text">
+          Al dar click en pagar te redirigiremos a la pagina para que procedas
+          con el pago
+        </p>
+        <button
+          *ngIf="!cuponValido.cupon"
+          class="btn btn_confirmar"
+          (click)="pagarCarrito()"
+          [disabled]="!form.valid"
+        >
+          Pagar
+        </button>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn_cancelar" (click)="modal.close('Close click')">Cancelar</button>
+        <button type="submit" class="btn btn-sm btn_aceptar" (click)="upload()" [disabled]="archivo == null">LOS QUIERO!</button>
+    </div> -->
+    </ng-template>
+
+    <ng-template #modalCupon let-modal modal-sm>
+      <div class="modal-body modalCupon">
+        <h4 class="modal-title">Bienvenido<br />tienes un cupón</h4>
+        <form #form="ngForm" class="datosCliente">
+          <p>Ingresa tu cupón para validarlo</p>
+          <div class="from-group">
+            <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="cupon"
+              name="cupon"
+              placeholder="cupon"
+              required
+            />
+          </div>
+        </form>
+        <button
+          class="btn btn_confirmar"
+          (click)="ValidarCupon()"
+          [disabled]="!form.valid"
+        >
+          Canjear
+        </button>
+      </div>
+    </ng-template>
+
+    <ng-template #modalCarrito let-modal modal-sm>
+      <div class="modal-body modalCarrito">
+        <h4 class="modal-title">Carrito de compra</h4>
+        <p>Estos son los paquete de boletos que agregaste a tu carrito</p>
+        <ul>
+          <li *ngFor="let carro of carrito; let i = index">
+            <span *ngIf="!carro.cupon"
+              >Paquete de {{ carro.numBoletos }} boletos
+              {{ carro.precio | currency }}</span
+            >
+            <span *ngIf="carro.cupon"
+              >Paquete de {{ carro.numBoletos }} boletos CUPÓN</span
+            >
+            <div class="box_boletos">
+              <span *ngFor="let boleto of carro.boletos">{{ boleto.num }}</span>
+            </div>
+            <img
+              class="eliminar"
+              src="assets/icons/omitir.png"
+              (click)="eliminarCarrito(i, carro)"
+            />
+          </li>
+        </ul>
+        <button class="btn btn_confirmar" (click)="abrirModalCompra(pago)">
+          Pagar boletos
+        </button>
+      </div>
+    </ng-template>
+  </div>
+</div>

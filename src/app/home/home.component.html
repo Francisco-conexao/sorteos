@@ -1,0 +1,64 @@
+
+<div class="card">
+    <div class="box_divider">
+        <span class="seleccionados">Productos</span>
+        <span class="seleccionados">{{articulos.length}}</span>
+        <button class="btn btn-sm" (click)="modalAchivo(content)" style="margin-right: 10px;">
+            <span>Cargar archivo</span>
+        </button>
+        <div class="buscar">
+            <input class="form-control" (ngModelChange)="getItems($event)" [(ngModel)]="buscar" type="text" placeholder="Buscar..." name="buscar">
+            <img src="assets/icons/salir.png" (click)="getItems(null);filter=null">
+        </div>
+    </div>
+    <div class="box_table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <!-- <th></th> -->
+                    <th style="">ID</th>
+                    <!-- <th style="">IMG</th> -->
+                    <th style="">REFERENCIA</th>
+                    <th style="">NOMBRE</th>
+                    <th style="">PRECIO</th>
+                    <th style="">PRECIO IVA</th>
+                    <th style="">CANTIDAD</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let articulo of articulos">
+                    <!-- <td style="width: 40px;"><input type="checkbox" class="form-control checkbox" [(ngModel)]="articulo.check" (change)="selecArticulo(articulo)"></td> -->
+                    <td style="text-align: center;">{{articulo.id}}</td>
+                    <!-- <td style="text-align: right;"><img [src]="articulo.img" width="50px"></td> -->
+                    <td style="">{{articulo.referencia}}</td>
+                    <td style="">{{articulo.nombre}}</td>
+                    <td style="text-align: right;">{{articulo.precio | currency}}</td>
+                    <td style="text-align: right;">{{articulo.precioIVA | currency}}</td>
+                    <td style="text-align: right;">{{articulo.cantidad}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <form #form="ngForm"></form>
+</div>
+<!-- MODALS -->
+<ng-template #content let-modal modal-sm>
+    <div class="modal-header">
+        <h4 class="modal-title">Actualizar productos </h4>
+    </div>
+    <div class="modal-body">
+        <div class="preview" *ngIf="src!=null">
+            <iframe width="100%" height="100%" [src]="src"></iframe>
+        </div>
+        <span class="mes">Archivo: <i>{{mes}}</i></span>
+        <div class="form-group">
+            <input type="file" name="file" (change)="subiendo($event)">
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-sm btn_cancelar" (click)="modal.close('Close click')">Cancelar</button>
+        <button type="submit" class="btn btn-sm btn_aceptar" (click)="upload()" [disabled]="archivo == null">Actualizar Productos</button>
+    </div>
+</ng-template>

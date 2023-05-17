@@ -1,0 +1,20 @@
+<div class="scrollWrapper">
+    <div class="box_container">
+        <div class="top_content">
+            <div class="box_perfil">
+                <span class="avatar">{{user.nombre.charAt(0)}}</span>
+                <span class="nombre">{{user.nombre}}</span>
+            </div>
+            <div class="navSections">
+                <ul>
+                    <li class="menu"><a (click)="verArticulos()"><span>Articulos</span></a></li>
+                    <li><a (click)="salir()"><span>Cerrar Sesión</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel_content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+

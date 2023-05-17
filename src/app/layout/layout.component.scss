@@ -1,0 +1,91 @@
+.scrollWrapper {
+    background-color: #f7f8fc;
+    min-width: 1410px;
+    position: relative;
+    padding-left: calc(50vw - 800px);
+    padding-right: calc(50vw - 800px);
+    .box_container{
+        position: relative;
+        height: 100vh;
+        box-sizing: border-box;
+        .top_content{
+            padding-top: 20px;
+            padding-bottom: 20px;
+            
+            height: 68px;
+            width: 100%;
+            min-width: 1400px;
+            padding-left: 16px;
+            padding-right: 16px;
+            top: 0;
+            z-index: 11;
+            .box_perfil{
+                float: left;
+                .avatar{
+                    float: left;
+                    width: 30px;
+                    height: 30px;
+                    background: var(--morado);
+                    border-radius: 100%;
+                    color: #fff;
+                    text-align: center;
+                    padding-top: 5px;
+                }
+                .nombre{
+                    font-size: 16px;
+                    color: #1a1f36;
+                    padding: 5px 10px;
+                    float: left;
+                    font-weight: 400;
+                }
+            }
+            .navSections{
+                position: relative;
+                flex-grow: 1;
+                -webkit-user-select: none;
+                -ms-user-select: none;
+                float: right;
+                ul{
+                    float: left;
+                    margin: 0px;
+                    li{
+                        list-style: none;
+                        float: left;
+                        padding: 0px 5px;
+                        a{
+                            float: left;
+                            font-size: 15px;
+                            color: #fff;
+                            background: var(--morado);
+                            padding: 2px 15px;
+                            border-radius: 30px;
+                            span{
+                                line-height: 20px;
+                                font-weight: 600;
+                                
+                                float: left;
+                                padding: 3px 0px;
+                            }
+                        }
+                        a.active{
+                            color: var(--negro);
+                        }
+                    }
+                    .menu{
+                        a{
+                            background: var(--negro);
+                        }
+                    }
+                }
+            }
+        }
+        .panel_content{
+            padding-bottom: 48px;
+            box-sizing: border-box;
+            position: relative;
+            min-width: 1400px;
+            width: 100%;
+        }
+    }
+}
+

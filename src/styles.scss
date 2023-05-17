@@ -1,1 +1,240 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+  background: #180946 !important;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: var(--negro) !important;
+}
+
+:root {
+  --amarillo: #ffc107;
+  --naranja: #ff9007;
+  --negro: #1a1f36;
+  --morado: #c92d64;
+  --rosa: #c92d64;
+}
+
+.btn {
+  height: 44px;
+  font-size: 16px;
+}
+.btn.btn-primary {
+  background: var(--rosa);
+  border-color: var(--rosa);
+}
+
+.btn_continuar {
+  color: #fff !important;
+  background: none !important;
+  border: none !important;
+  font-size: 18px !important;
+  img {
+    margin-left: 10px;
+  }
+}
+
+.btn_aceptar {
+  padding: 4px 8px;
+  float: right;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, rgba(60, 66, 87, 0.16) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(60, 66, 87, 0.08) 0px 3px 9px 0px,
+    rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
+  height: 35px;
+  font-size: 14px;
+  background: var(--morado) !important;
+  color: #fff !important;
+  svg {
+    margin-top: -3px;
+    margin-right: 8px;
+  }
+  span {
+    margin-top: -1px;
+    white-space: nowrap;
+  }
+}
+
+.btn_cancelar {
+  padding: 4px 8px;
+  float: right;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, rgba(60, 66, 87, 0.16) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(60, 66, 87, 0.08) 0px 3px 9px 0px,
+    rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
+  height: 35px;
+  font-size: 14px;
+  svg {
+    margin-top: -3px;
+    margin-right: 8px;
+  }
+  span {
+    margin-top: -1px;
+    white-space: nowrap;
+  }
+}
+.btn_eliminar {
+  padding: 4px 8px;
+  float: right;
+  box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.12) 0px 1px 1px 0px, rgba(60, 66, 87, 0.16) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(60, 66, 87, 0.08) 0px 3px 9px 0px,
+    rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
+  height: 35px;
+  font-size: 14px;
+  svg {
+    margin-top: -3px;
+    margin-right: 8px;
+  }
+  span {
+    margin-top: -1px;
+    white-space: nowrap;
+  }
+}
+.card {
+  box-shadow: 0 7px 14px 0 rgba(60, 66, 87, 0.08),
+    0 3px 6px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  margin-bottom: 12px;
+  background-color: #fff;
+  padding-bottom: 30px;
+  .box_divider {
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    box-shadow: inset 0 -1px #e3e8ee;
+    box-sizing: border-box;
+    .seleccionados {
+      font-size: 20px;
+      float: left;
+    }
+    button {
+      padding: 6px 8px;
+      float: right;
+      box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+        rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.12) 0px 1px 1px 0px,
+        rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+        rgba(60, 66, 87, 0.08) 0px 3px 9px 0px,
+        rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
+      height: 35px;
+      font-size: 14px;
+      svg {
+        margin-top: -1px;
+        margin-right: 8px;
+      }
+    }
+  }
+  .box_table {
+    float: left;
+    width: 100%;
+    height: 700px;
+    overflow: auto;
+  }
+}
+.table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-top: inherit;
+    border-right-color: inherit;
+    border-bottom: inherit;
+    border-left-color: inherit;
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    tr {
+      background-color: #f7fafc;
+      box-sizing: border-box;
+      word-wrap: break-word;
+      th {
+        border: none;
+        font-size: 14px;
+        padding: 8px;
+        box-shadow: inset 0 -1px #e3e8ee;
+        border-left: 1px solid #e3e8ee;
+        text-align: center;
+      }
+    }
+  }
+  tbody {
+    tr:hover {
+      background-color: #f7fafc;
+      td {
+      }
+    }
+    td {
+      box-shadow: inset 0 -1px #e3e8ee;
+      white-space: nowrap;
+      padding: 8px;
+      border-top: none;
+      font-size: 16px;
+      border-left: 1px solid #e3e8ee;
+      .checkbox {
+        width: 16px;
+        height: 16px;
+        float: left;
+        margin-top: 1px;
+        margin-left: 5px;
+      }
+      button {
+        padding: 4px 7px 4px 4px;
+        float: right;
+        box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+          rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.12) 0px 1px 1px 0px,
+          rgba(60, 66, 87, 0.16) 0px 0px 0px 1px,
+          rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+          rgba(60, 66, 87, 0.08) 0px 2px 5px 0px;
+        height: 28px;
+        font-size: 14px;
+        color: rgb(60, 66, 87);
+        svg {
+          margin-top: -3px;
+          margin-right: 8px;
+        }
+      }
+      .btn_azul {
+        background: var(--azul);
+        color: #fff;
+      }
+    }
+    td.rojo {
+      background: rgba(245, 213, 179, 0.5);
+    }
+    td.verde {
+      background: rgba(0, 255, 76, 0.5);
+    }
+  }
+}
+
+.modal-header {
+  .modal-title {
+    margin-bottom: 0px;
+  }
+}
+.modal-body {
+  background-color: #f7fafc;
+}
+.light-blue {
+  background-color: rgba(193, 201, 210, 1) !important;
+}
+
+.btn-primary {
+  background: #3fe5e8 !important;
+  border-color: #3fe5e8 !important;
+  color: #180946 !important;
+}
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";

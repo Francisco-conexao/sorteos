@@ -1,0 +1,8 @@
+{
+  "/APImubochi": {
+    "target": "https://sefemex.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

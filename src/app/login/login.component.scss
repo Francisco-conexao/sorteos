@@ -1,0 +1,39 @@
+.container{
+    .logotipo{
+        margin: auto;
+        display: block;
+        margin-bottom: 30px;
+        width: 300px;
+    }
+    .box_login{
+        background: white;
+        border-radius: 4px;
+        box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+        will-change: transform, width, height;
+        box-sizing: border-box;
+        z-index: 1;
+        display: grid;
+        position: relative;
+        padding: 50px 40px;
+        border-radius: 3px;
+
+        h1{
+            font-size: 20px;
+        }
+        form{
+            label{
+                width: 100%;
+                span{
+                    float: right;
+                    color: var(--morado);
+                    font-size: 14px;
+                }
+            }
+        }
+        button{
+            background: var(--morado);
+            border: var(--morado);
+        }
+    }
+
+}
