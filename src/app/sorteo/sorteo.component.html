@@ -147,14 +147,15 @@
         </span>
         <div class="box_boletosSelect" *ngIf="boletosSelect?.length > 0">
           <span class="boleto_select">Boletos seleccionados:</span>
-          <span
-            class="boleto {{ boleto.select ? 'active' : '' }}"
-            *ngFor="let boleto of boletosSelect"
-          >
-            {{ boleto.num }}
-            <img src="assets/icons/omitir.png" (click)="selecNum(boleto)" />
-          </span>
-          <!-- <button class="btn btn_pagar">Pagar</button> -->
+          <div class="box_boletos_list">
+            <span
+              class="boleto {{ boleto.select ? 'active' : '' }}"
+              *ngFor="let boleto of boletosSelect"
+            >
+              {{ boleto.num }}
+              <img src="assets/icons/omitir.png" (click)="selecNum(boleto)" />
+            </span>
+          </div>
         </div>
         <div
           class="box_maquinita"
@@ -235,6 +236,11 @@
         >
           <img src="assets/ticket.png" alt="ticket" />
           <strong>{{ carro.numBoletos }} Boletos</strong>
+          <img
+            class="eliminar"
+            src="assets/icons/omitir.png"
+            (click)="eliminarCarrito(i, carro)"
+          />
           <div class="box_boletos">
             <span *ngFor="let boleto of carro.boletos">*{{ boleto.num }}</span>
           </div>
@@ -242,6 +248,9 @@
       </div>
       <button class="btn btn_agregar_carrito" (click)="views = 'paquetes'">
         Comprar más Boletos
+      </button>
+      <button class="btn btn_continuar" (click)="ValidarCupon()">
+        Concluir Pedido <img src="assets/icons/flecha.png" />
       </button>
     </div>
     <div class="container-paquetes" *ngIf="views == 'paquetes'">

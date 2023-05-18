@@ -48,10 +48,13 @@
     max-width: 576px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 90px;
-    padding-top: 40px;
+    margin-top: 76px;
+    padding-top: 0px;
 
     .container-home {
+      float: left;
+      width: 100%;
+      padding-top: 40px;
       h1 {
         font-weight: 300;
         font-size: 30px;
@@ -142,6 +145,9 @@
       }
     }
     .container-cupon {
+      float: left;
+      width: 100%;
+      padding-top: 40px;
       .box_sorteo_cupon {
         float: left;
         width: 100%;
@@ -193,6 +199,9 @@
       }
     }
     .container-paquete {
+      float: left;
+      width: 100%;
+      padding-top: 40px;
       .box_sorteo_cupon {
         float: left;
         width: 100%;
@@ -269,6 +278,13 @@
             width: 100%;
           }
         }
+        .box_boletos_list {
+          float: left;
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+        }
         .box_maquinita {
           float: left;
           width: 100%;
@@ -343,6 +359,9 @@
       }
     }
     .container-carrito {
+      float: left;
+      width: 100%;
+      padding-top: 40px;
       .box_sorteo_cupon {
         float: left;
         width: 100%;
@@ -380,6 +399,7 @@
           justify-content: center;
           align-items: center;
           margin-bottom: 15px;
+          position: relative;
           img {
             margin-right: 20px;
             width: 70px;
@@ -404,6 +424,10 @@
               padding: 5px 10px;
               font-size: 16px;
             }
+          }
+          .eliminar {
+            width: 25px;
+            margin-left: 15px;
           }
         }
       }
