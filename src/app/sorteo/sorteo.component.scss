@@ -34,6 +34,13 @@
     //     width: 35px;
     //   }
     // }
+    .divider_header {
+      float: left;
+      width: 100%;
+      position: absolute;
+      top: 60px;
+      left: 0px;
+    }
   }
   .divider {
     float: left;
@@ -362,6 +369,14 @@
       float: left;
       width: 100%;
       padding-top: 40px;
+      h4 {
+        font-family: Helvetica;
+        font-size: 25px;
+        color: #fe901d;
+        letter-spacing: 0.31px;
+        text-align: center;
+        line-height: 30px;
+      }
       .box_sorteo_cupon {
         float: left;
         width: 100%;
@@ -409,6 +424,11 @@
             color: #ffffff;
             letter-spacing: 0.89px;
           }
+          .precio {
+            font-size: 15px;
+            color: #fff;
+            margin-left: 20px;
+          }
           .box_boletos {
             float: left;
             width: 100%;
@@ -429,6 +449,18 @@
             width: 25px;
             margin-left: 15px;
           }
+        }
+      }
+      .box_total {
+        float: left;
+        width: 100%;
+        color: #fff;
+        font-size: 22px;
+        padding: 25px 40px;
+        border-top: 1px solid rgba(255, 255, 255, 0.646);
+        .monto_total {
+          float: right;
+          font-size: 26px;
         }
       }
     }
@@ -488,6 +520,33 @@
           letter-spacing: 0.89px;
           font-weight: 300;
         }
+      }
+    }
+    .container-confirmacion {
+      float: left;
+      width: 100%;
+      background: #47feff;
+      text-align: center;
+      padding: 50px 0px;
+      .img_ticket_confirm {
+        width: 230px;
+      }
+      h4 {
+        font-size: 27px;
+        color: #180946;
+        letter-spacing: 0.38px;
+        text-align: center;
+        line-height: 30px;
+        padding: 15px 20px;
+        margin-top: 10px;
+      }
+      p {
+        color: #000;
+        font-size: 18px;
+        padding: 15px 20px;
+      }
+      .btn_continuar {
+        color: #000 !important;
       }
     }
     .menu {

@@ -8,6 +8,7 @@
   </div> -->
   <header>
     <img class="logotipo" src="assets/logotipo.png" alt="logotipo" />
+    <img class="divider_header" src="assets/divider.png" alt="" />
   </header>
   <div class="box_container">
     <!-- <div class="menu">
@@ -249,7 +250,7 @@
       <button class="btn btn_agregar_carrito" (click)="views = 'paquetes'">
         Comprar más Boletos
       </button>
-      <button class="btn btn_continuar" (click)="ValidarCupon()">
+      <button class="btn btn_continuar" (click)="views = 'pagos'">
         Concluir Pedido <img src="assets/icons/flecha.png" />
       </button>
     </div>
@@ -281,6 +282,61 @@
       </div>
       <button class="btn btn_agregar_carrito" (click)="views = 'paquete'">
         Comprar Boletos
+      </button>
+    </div>
+    <div class="container-carrito" *ngIf="views == 'pagos'">
+      <h4>Confirmación de Pedido</h4>
+      <div class="box_sorteo_cupon">
+        <img class="img_sorteo" [src]="sorteoSelect.img" />
+        <span class="nombre_sorteo">{{ sorteoSelect.nombre }}</span>
+      </div>
+      <div class="box_boletos_canjeado">
+        <p class="text_canjeado">Estos son tus bloques de boletos</p>
+        <span
+          class="boletos_canjeados"
+          *ngFor="let carro of carrito; let i = index"
+        >
+          <img src="assets/ticket.png" alt="ticket" />
+          <strong>{{ carro.numBoletos }} Boletos</strong>
+          <span class="precio" *ngIf="!carro.cupon.cupon">{{
+            carro.precio | currency
+          }}</span>
+          <span
+            class="precio"
+            style="font-size: 15px"
+            *ngIf="carro.cupon.cupon"
+          >
+            Cupón:<br />{{ carro.cupon.cupon }}</span
+          >
+          <div class="box_boletos">
+            <span *ngFor="let boleto of carro.boletos">*{{ boleto.num }}</span>
+          </div>
+        </span>
+      </div>
+      <div class="box_total">
+        <span class="total">Total a Pagar:</span
+        ><span class="monto_total">{{ total | currency }}</span>
+      </div>
+      <button class="btn btn_agregar_carrito" (click)="views = 'paquetes'">
+        Comprar más Boletos
+      </button>
+      <button class="btn btn_continuar" (click)="views = 'confirmacion'">
+        Finalizar Compra <img src="assets/icons/flecha.png" />
+      </button>
+    </div>
+    <div class="container-confirmacion" *ngIf="views == 'confirmacion'">
+      <img
+        class="img_ticket_confirm"
+        src="assets/ticket_confirm.png"
+        alt="ticket confirm"
+      />
+      <h4>¡Pedido Realizado con Éxito!</h4>
+      <p>
+        Un Lucky Friend se pondrá en contacto contigo vía whatsapp para dar
+        seguimiento.
+      </p>
+      <button class="btn btn_continuar" (click)="ValidarCupon()">
+        Ir a Inicio <img src="assets/icons/flecha_naranja.png" />
       </button>
     </div>
     <!-- <div

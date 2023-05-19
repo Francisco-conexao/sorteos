@@ -347,6 +347,7 @@ export class SorteoComponent implements OnInit {
 
   //CARRITO DE CROMPRA ---------------------------------------
   carrito = [];
+  total = 0;
   agregarCarrito() {
     let carritoSelect = {
       boletos: this.boletosSelect,
@@ -354,6 +355,9 @@ export class SorteoComponent implements OnInit {
       precio: this.paquete.precio,
     };
     this.carrito.push(carritoSelect);
+    if (!carritoSelect.precio.cupon) {
+      this.total += parseFloat(carritoSelect.precio);
+    }
     this.boletosSelect.forEach((item) => {
       item.vendido = 1;
     });
@@ -370,6 +374,9 @@ export class SorteoComponent implements OnInit {
   }
 
   eliminarCarrito(index, carrito) {
+    if (!carrito.cupon.cupon) {
+      this.total -= parseFloat(this.carrito[index].precio);
+    }
     this.carrito.splice(index, 1);
     console.log(carrito);
     carrito.boletos.forEach((item) => {
@@ -385,6 +392,9 @@ export class SorteoComponent implements OnInit {
       cupon: this.cuponValido,
     };
     this.carrito.push(carritoSelect);
+    if (!carritoSelect.cupon.cupon) {
+      this.total += parseFloat(carritoSelect.precio);
+    }
     this.boletosSelect.forEach((item) => {
       item.vendido = 1;
     });
