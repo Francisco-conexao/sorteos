@@ -8,7 +8,13 @@
   </div> -->
   <header>
     <img class="logotipo" src="assets/logotipo.png" alt="logotipo" />
-    <img class="divider_header" src="assets/divider.png" alt="" />
+    <img class="divider_header" src="assets/divider.png" alt="regresar" />
+    <img
+      class="regresar"
+      (click)="views = 'home'"
+      src="assets/icons/flechaR.png"
+      *ngIf="views == 'cupon'"
+    />
   </header>
   <div class="box_container">
     <!-- <div class="menu">
@@ -38,6 +44,7 @@
         </div>
       </div>
       <div class="box_info">
+        <img class="divider-top" src="assets/divider_top.png" alt="divider" />
         <h2>Conoce Nuestros<br />Sorteos</h2>
         <div class="info_sorteo">
           <img src="assets/sorteos.png" alt="sorteos" />
@@ -140,7 +147,12 @@
         </span>
       </div>
       <div class="box_boletos_select">
-        <img class="divider" src="assets/divider.png" alt="divider" />
+        <img
+          class="divider-top"
+          src="assets/divider_top.png"
+          alt="divider"
+          style="top: -30px"
+        />
         <span class="boletos_faltantes">
           <i>Faltan</i>
           <strong>{{ paquete.boletos - boletosSelect.length }}</strong>
@@ -283,6 +295,7 @@
       <button class="btn btn_agregar_carrito" (click)="views = 'paquete'">
         Comprar Boletos
       </button>
+      <img src="assets/dividerAzul.png" class="divider-bottom" />
     </div>
     <div class="container-carrito" *ngIf="views == 'pagos'">
       <h4>Confirmación de Pedido</h4>
@@ -320,7 +333,7 @@
       <button class="btn btn_agregar_carrito" (click)="views = 'paquetes'">
         Comprar más Boletos
       </button>
-      <button class="btn btn_continuar" (click)="views = 'confirmacion'">
+      <button class="btn btn_continuar" (click)="pagarCarrito()">
         Finalizar Compra <img src="assets/icons/flecha.png" />
       </button>
     </div>
@@ -335,9 +348,14 @@
         Un Lucky Friend se pondrá en contacto contigo vía whatsapp para dar
         seguimiento.
       </p>
-      <button class="btn btn_continuar" (click)="ValidarCupon()">
+      <button class="btn btn_continuar" (click)="views = 'home'">
         Ir a Inicio <img src="assets/icons/flecha_naranja.png" />
       </button>
+      <img
+        src="assets/dividerAzul.png"
+        class="divider-bottom"
+        style="top: -53px"
+      />
     </div>
     <!-- <div
       id="carouselSorteos"

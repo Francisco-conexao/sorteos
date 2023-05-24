@@ -114,9 +114,11 @@ export class SorteoComponent implements OnInit {
             this.sorteoSelect = sorteo;
           }
         });
-        this.paquetes[0].precio = this.sorteoSelect.precio1;
-        this.paquetes[1].precio = this.sorteoSelect.precio4;
-        this.paquetes[2].precio = this.sorteoSelect.precio9;
+        console.log(this.sorteoSelect);
+        this.paquetes[0].precio = parseFloat(this.sorteoSelect.precio1);
+        this.paquetes[1].precio = parseFloat(this.sorteoSelect.precio2);
+        this.paquetes[2].precio = parseFloat(this.sorteoSelect.precio3);
+        this.paquetes[3].precio = parseFloat(this.sorteoSelect.precio4);
         console.log(this.paquetes);
         this.listarBoletos(this.sorteoSelect);
         // this.abrirModalCupon(this.modalCupon);
@@ -262,24 +264,24 @@ export class SorteoComponent implements OnInit {
     }
   }
 
-  pagar(boletosCarrito, total) {
+  async pagar(boletosCarrito, total) {
     console.log(this.boletosSelect);
     let boletos: any = [];
     boletosCarrito.forEach((item) => {
       boletos.push(item.num);
       item.vendido = 1;
     });
-    this.pagosServ
+    await this.pagosServ
       .pagos({
-        cliente: this.cliente,
+        cliente: { celular: this.whastapp },
         boletos: boletos,
         total: total,
         sorteo: this.sorteoSelect,
+        cantidadBoletos: boletos.length,
       })
       .then((data: any) => {
-        this.modalService.dismissAll();
         this.boletosSelect = [];
-        window.open(data.url);
+        this.views = 'confirmacion';
       });
   }
 
@@ -312,13 +314,13 @@ export class SorteoComponent implements OnInit {
     });
   }
 
-  canjearBoletos(boletosSelect, cuponValido) {
+  async canjearBoletos(boletosSelect, cuponValido) {
     this.spinner.show();
-    this.boletosServ
+    await this.boletosServ
       .canjearBoletos({
         cupon: cuponValido,
         boletos: boletosSelect,
-        cliente: this.cliente,
+        cliente: { celular: this.whastapp },
         sorteo: this.sorteoSelect,
       })
       .then((data: any) => {
@@ -338,8 +340,9 @@ export class SorteoComponent implements OnInit {
     sorteo.select = 1;
     this.sorteoSelect = sorteo;
     this.paquetes[0].precio = this.sorteoSelect.precio1;
-    this.paquetes[1].precio = this.sorteoSelect.precio4;
-    this.paquetes[2].precio = this.sorteoSelect.precio9;
+    this.paquetes[1].precio = this.sorteoSelect.precio2;
+    this.paquetes[2].precio = this.sorteoSelect.precio3;
+    this.paquetes[3].precio = this.sorteoSelect.precio4;
     this.carrito = [];
     this.listarBoletos(this.sorteoSelect);
     this.views = 'cupon';
@@ -405,13 +408,14 @@ export class SorteoComponent implements OnInit {
     this.views = 'carrito';
   }
 
-  pagarCarrito() {
+  async pagarCarrito() {
     let boletosCupon = [];
     let cuponValido = {};
     let boletosPago = [];
     let total: number = 0;
+    console.log(this.carrito);
     this.carrito.forEach((item) => {
-      if (item.cupon) {
+      if (item.cupon.cupon) {
         cuponValido = item.cupon;
         boletosCupon = item.boletos;
       } else {
@@ -424,10 +428,10 @@ export class SorteoComponent implements OnInit {
     console.log(boletosCupon);
     console.log(cuponValido);
     if (boletosCupon.length >= 1) {
-      this.canjearBoletos(boletosCupon, cuponValido);
+      await this.canjearBoletos(boletosCupon, cuponValido);
     }
     if (boletosPago.length >= 1) {
-      this.pagar(boletosPago, total);
+      await this.pagar(boletosPago, total);
     }
     this.modalService.dismissAll();
     this.carrito = [];

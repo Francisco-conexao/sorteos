@@ -48,6 +48,7 @@
     position: relative;
     top: -30px;
   }
+
   .box_container {
     position: relative;
     box-sizing: border-box;
@@ -159,18 +160,19 @@
         float: left;
         width: 100%;
         padding: 20px 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         .img_sorteo {
-          width: 120px;
+          width: 100px;
           border-radius: 10px;
-          float: left;
-          margin-right: 10px;
+          margin-right: 20px;
         }
         .nombre_sorteo {
           font-size: 20px;
           color: #ffffff;
           letter-spacing: 0.31px;
           line-height: 30px;
-          width: calc(100% - 130px);
           float: left;
         }
       }
@@ -213,8 +215,11 @@
         float: left;
         width: 100%;
         padding: 20px 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         .img_sorteo {
-          width: 120px;
+          width: 60px;
           border-radius: 10px;
           float: left;
           margin-right: 10px;
@@ -224,7 +229,6 @@
           color: #ffffff;
           letter-spacing: 0.31px;
           line-height: 30px;
-          width: calc(100% - 130px);
           float: left;
         }
       }
@@ -272,6 +276,7 @@
           align-items: center;
           padding: 0px 50px;
           text-align: center;
+          margin-bottom: 15px;
           strong {
             font-size: 60px;
             color: #3fe5e8;
@@ -381,8 +386,11 @@
         float: left;
         width: 100%;
         padding: 20px 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         .img_sorteo {
-          width: 120px;
+          width: 60px;
           border-radius: 10px;
           float: left;
           margin-right: 10px;
@@ -392,7 +400,6 @@
           color: #ffffff;
           letter-spacing: 0.31px;
           line-height: 30px;
-          width: calc(100% - 130px);
           float: left;
         }
       }
@@ -468,12 +475,16 @@
       float: left;
       width: 100%;
       background: #ac92ec;
+      padding-top: 30px;
       .box_sorteo_cupon {
         float: left;
         width: 100%;
         padding: 20px 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         .img_sorteo {
-          width: 120px;
+          width: 60px;
           border-radius: 10px;
           float: left;
           margin-right: 10px;
@@ -483,7 +494,6 @@
           color: #ffffff;
           letter-spacing: 0.31px;
           line-height: 30px;
-          width: calc(100% - 130px);
           float: left;
         }
       }
@@ -1094,4 +1104,24 @@
   margin-bottom: 30px;
   height: auto;
   padding: 10px 80px;
+}
+.regresar {
+  float: left;
+  width: 30px;
+  margin: 25px 20px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.divider-top {
+  float: left;
+  width: 100%;
+  position: relative;
+  top: -10px;
+}
+.divider-bottom {
+  float: left;
+  width: 100%;
+  position: relative;
+  bottom: -3px;
 }
