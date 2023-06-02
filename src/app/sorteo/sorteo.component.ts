@@ -282,6 +282,7 @@ export class SorteoComponent implements OnInit {
       .then((data: any) => {
         this.boletosSelect = [];
         this.views = 'confirmacion';
+        window.open('http://www.sefemex.com/APImubochi/remision.pdf');
       });
   }
 
