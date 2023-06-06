@@ -21,11 +21,11 @@
     //     margin-right: 10px;
     //   }
     // }
-    // .logotipo {
-    //   margin: auto;
-    //   display: block;
-    //   width: 110px;
-    // }
+    .logotipo {
+      margin: auto;
+      display: block;
+      width: 110px;
+    }
     // .carrito {
     //   position: absolute;
     //   top: 20px;
@@ -38,7 +38,29 @@
       float: left;
       width: 100%;
       position: absolute;
-      top: 60px;
+      top: 80px;
+      left: 0px;
+    }
+  }
+  footer {
+    float: left;
+    width: 100%;
+    padding: 40px 0px;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    z-index: 100;
+    background: #180946;
+    .logotipo {
+      margin: auto;
+      display: block;
+      width: 110px;
+    }
+    .divider_footer {
+      float: left;
+      width: 100%;
+      position: absolute;
+      top: -15px;
       left: 0px;
     }
   }
@@ -50,6 +72,8 @@
   }
 
   .box_container {
+    float: left;
+    width: 100%;
     position: relative;
     box-sizing: border-box;
     background: #180946 !important;
@@ -62,7 +86,7 @@
     .container-home {
       float: left;
       width: 100%;
-      padding-top: 40px;
+      padding-top: 80px;
       h1 {
         font-weight: 300;
         font-size: 30px;
@@ -105,6 +129,7 @@
         float: left;
         width: 100%;
         margin-top: 50px;
+        padding-bottom: 150px;
         h2 {
           font-size: 30px;
           color: #3fe5e8;
@@ -155,7 +180,8 @@
     .container-cupon {
       float: left;
       width: 100%;
-      padding-top: 40px;
+      padding-top: 80px;
+      padding-bottom: 120px;
       .box_sorteo_cupon {
         float: left;
         width: 100%;
@@ -211,6 +237,7 @@
       float: left;
       width: 100%;
       padding-top: 40px;
+      padding-bottom: 120px;
       .box_sorteo_cupon {
         float: left;
         width: 100%;
@@ -373,7 +400,8 @@
     .container-carrito {
       float: left;
       width: 100%;
-      padding-top: 40px;
+      padding-top: 80px;
+      padding-bottom: 180px;
       h4 {
         font-family: Helvetica;
         font-size: 25px;
@@ -537,7 +565,7 @@
       width: 100%;
       background: #47feff;
       text-align: center;
-      padding: 50px 0px;
+      padding: 37% 0px;
       .img_ticket_confirm {
         width: 230px;
       }

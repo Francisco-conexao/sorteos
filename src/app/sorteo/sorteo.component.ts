@@ -265,12 +265,12 @@ export class SorteoComponent implements OnInit {
   }
 
   async pagar(boletosCarrito, total) {
-    console.log(this.boletosSelect);
     let boletos: any = [];
     boletosCarrito.forEach((item) => {
       boletos.push(item.num);
       item.vendido = 1;
     });
+    this.spinner.show();
     await this.pagosServ
       .pagos({
         cliente: { celular: this.whastapp },
@@ -280,9 +280,9 @@ export class SorteoComponent implements OnInit {
         cantidadBoletos: boletos.length,
       })
       .then((data: any) => {
+        this.spinner.hide();
         this.boletosSelect = [];
-        this.views = 'confirmacion';
-        window.open('http://www.sefemex.com/APImubochi/remision.pdf');
+        window.open('http://www.sefemex.com/APISorteos/remision.pdf');
       });
   }
 
@@ -328,7 +328,6 @@ export class SorteoComponent implements OnInit {
         this.spinner.hide();
         this.boletosSelect = [];
         this.cuponValido = {};
-        this.modalService.dismissAll();
         this.listarBoletos(this.sorteoSelect);
       });
   }
@@ -428,12 +427,18 @@ export class SorteoComponent implements OnInit {
     });
     console.log(boletosCupon);
     console.log(cuponValido);
+
     if (boletosCupon.length >= 1) {
       await this.canjearBoletos(boletosCupon, cuponValido);
     }
     if (boletosPago.length >= 1) {
       await this.pagar(boletosPago, total);
     }
+
+    if (boletosCupon.length >= 1 || boletosPago.length >= 1) {
+      this.views = 'confirmacion';
+    }
+
     this.modalService.dismissAll();
     this.carrito = [];
   }

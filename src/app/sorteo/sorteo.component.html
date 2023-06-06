@@ -295,7 +295,6 @@
       <button class="btn btn_agregar_carrito" (click)="views = 'paquete'">
         Comprar Boletos
       </button>
-      <img src="assets/dividerAzul.png" class="divider-bottom" />
     </div>
     <div class="container-carrito" *ngIf="views == 'pagos'">
       <h4>Confirmación de Pedido</h4>
@@ -351,11 +350,6 @@
       <button class="btn btn_continuar" (click)="views = 'home'">
         Ir a Inicio <img src="assets/icons/flecha_naranja.png" />
       </button>
-      <img
-        src="assets/dividerAzul.png"
-        class="divider-bottom"
-        style="bottom: -53px"
-      />
     </div>
     <!-- <div
       id="carouselSorteos"
@@ -415,8 +409,8 @@
         <span class="check"></span>
       </div>
     </div> -->
-    <div class="box_container blanco">
-      <!-- <div class="box_boletos">
+    <!-- <div class="box_container blanco">
+      <div class="box_boletos">
       <div class="box_buscar">
         <span class="boletosSelec">
           Tienes <i>{{ boletosSelect.length }}</i> boleto{{
@@ -449,8 +443,8 @@
       </div>
       
     </div>
-  </div> -->
-    </div>
+  </div> 
+    </div>-->
     <!-- MODALS -->
     <ng-template #content let-modal modal-sm modalMaquinita>
       <div class="modal-body">
@@ -637,4 +631,12 @@
       </div>
     </ng-template>
   </div>
+  <footer>
+    <img
+      class="divider_footer"
+      src="assets/divider_footer.png"
+      alt="regresar"
+    />
+    <img class="logotipo" src="assets/logotipo.png" alt="logotipo" />
+  </footer>
 </div>
