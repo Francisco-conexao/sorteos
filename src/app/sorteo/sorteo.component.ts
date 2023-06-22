@@ -108,20 +108,16 @@ export class SorteoComponent implements OnInit {
       this.spinner.hide();
       if (data.sorteos) {
         this.sorteos = data.sorteos;
-        console.log(this.sorteos);
         this.sorteos.forEach((sorteo) => {
           if (sorteo.select == 1) {
             this.sorteoSelect = sorteo;
           }
         });
-        console.log(this.sorteoSelect);
         this.paquetes[0].precio = parseFloat(this.sorteoSelect.precio1);
         this.paquetes[1].precio = parseFloat(this.sorteoSelect.precio2);
         this.paquetes[2].precio = parseFloat(this.sorteoSelect.precio3);
         this.paquetes[3].precio = parseFloat(this.sorteoSelect.precio4);
-        console.log(this.paquetes);
         this.listarBoletos(this.sorteoSelect);
-        // this.abrirModalCupon(this.modalCupon);
       }
     });
   }
@@ -134,7 +130,7 @@ export class SorteoComponent implements OnInit {
         '0'.repeat(len - number.toString().length) + number.toString();
 
       this.boletos = [];
-      for (let i = 0; i < 5000; i++) {
+      for (let i = 0; i < 10000; i++) {
         this.boletos.push({ num: fill(i, 4), vendido: 0, select: 0 });
       }
 
@@ -213,11 +209,6 @@ export class SorteoComponent implements OnInit {
       if (this.boletos[random].vendido) {
         index--;
       } else {
-        console.log(
-          this.boletosSelectRandom.find(
-            (data) => data.num == this.boletos[random].num
-          )
-        );
         if (
           this.boletosSelectRandom.find(
             (data) => data.num == this.boletos[random].num
@@ -257,14 +248,13 @@ export class SorteoComponent implements OnInit {
         });
         paquete.estatus = 1;
         this.paquete = paquete;
-        console.log(this.paquete);
         this.boletosSelect = [];
         this.borrarSelect();
       }
     }
   }
 
-  async pagar(boletosCarrito, total) {
+  async pagar(boletosCarrito, total, boletosCupon) {
     let boletos: any = [];
     boletosCarrito.forEach((item) => {
       boletos.push(item.num);
@@ -273,8 +263,9 @@ export class SorteoComponent implements OnInit {
     this.spinner.show();
     await this.pagosServ
       .pagos({
-        cliente: { celular: this.whastapp },
+        cliente: this.cliente,
         boletos: boletos,
+        boletosCupon: boletosCupon,
         total: total,
         sorteo: this.sorteoSelect,
         cantidadBoletos: boletos.length,
@@ -282,37 +273,43 @@ export class SorteoComponent implements OnInit {
       .then((data: any) => {
         this.spinner.hide();
         this.boletosSelect = [];
-        window.open('http://www.sefemex.com/APISorteos/remision.pdf');
+        window.open('http://www.luckyiphone.com/APISorteos/remision.pdf');
+        window.open(`https://wa.me/3319158666?text=
+        Hola! Quiero reservar la siguiente transacción No de transacción: A0${
+          data.id_pedido
+        } | Apartado: ${
+          data.fecha
+        } | Tiempo de apartado: 72 hrs | Importe a Pagar: $${total} | Boletos Cupón: ${boletosCupon.map(
+          (boleto) => boleto.num
+        )} | Boletos por pagar:${boletos.map((boleto) => boleto)}`);
       });
   }
 
-  ValidarCupon() {
-    this.spinner.show();
-    this.boletosServ.validarCupon({ cupon: this.cupon }).then((data: any) => {
-      this.spinner.hide();
-      this.modalService.dismissAll();
-      if (data.status == 200) {
-        // Swal.fire({
-        //   icon: 'success',
-        //   title: '¡Bien!',
-        //   text: 'Cupon valido por ' + data.cupon.boletos + ' boletos',
-        // });
-        this.paquetes.forEach((item) => {
-          if (item.boletos == data.cupon.boletos) {
-            console.log(item);
-            this.elegirPaquete(item);
-          }
-        });
-        this.cuponValido = data.cupon;
-        this.views = 'paquete';
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: '¡Oops!',
-          text: 'Cupon no valido',
-        });
-      }
-    });
+  validarCupon() {
+    if (this.cupon === '' || this.cupon === null) {
+      this.views = 'paquetes';
+    } else {
+      this.spinner.show();
+      this.boletosServ.validarCupon({ cupon: this.cupon }).then((data: any) => {
+        this.spinner.hide();
+        this.modalService.dismissAll();
+        if (data.status == 200) {
+          this.paquetes.forEach((item) => {
+            if (item.boletos == data.cupon.boletos) {
+              this.elegirPaquete(item);
+            }
+          });
+          this.cuponValido = data.cupon;
+          this.views = 'paquete';
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: '¡Oops!',
+            text: 'Cupon no valido',
+          });
+        }
+      });
+    }
   }
 
   async canjearBoletos(boletosSelect, cuponValido) {
@@ -321,7 +318,7 @@ export class SorteoComponent implements OnInit {
       .canjearBoletos({
         cupon: cuponValido,
         boletos: boletosSelect,
-        cliente: { celular: this.whastapp },
+        cliente: this.cliente,
         sorteo: this.sorteoSelect,
       })
       .then((data: any) => {
@@ -333,7 +330,6 @@ export class SorteoComponent implements OnInit {
   }
 
   selecSorteo(sorteo) {
-    console.log('sorteos', this.sorteos);
     this.sorteos.forEach((sorteo) => {
       sorteo.select = 0;
     });
@@ -366,7 +362,6 @@ export class SorteoComponent implements OnInit {
     });
     this.boletosSelect = [];
     this.borrarSelect();
-    console.log(this.carrito);
   }
 
   abrirModalCarrito(content) {
@@ -381,7 +376,6 @@ export class SorteoComponent implements OnInit {
       this.total -= parseFloat(this.carrito[index].precio);
     }
     this.carrito.splice(index, 1);
-    console.log(carrito);
     carrito.boletos.forEach((item) => {
       item.vendido = 0;
     });
@@ -404,7 +398,6 @@ export class SorteoComponent implements OnInit {
     this.boletosSelect = [];
     this.borrarSelect();
     this.cuponValido = {};
-    console.log(this.carrito);
     this.views = 'carrito';
   }
 
@@ -413,7 +406,6 @@ export class SorteoComponent implements OnInit {
     let cuponValido = {};
     let boletosPago = [];
     let total: number = 0;
-    console.log(this.carrito);
     this.carrito.forEach((item) => {
       if (item.cupon.cupon) {
         cuponValido = item.cupon;
@@ -425,14 +417,12 @@ export class SorteoComponent implements OnInit {
         });
       }
     });
-    console.log(boletosCupon);
-    console.log(cuponValido);
 
     if (boletosCupon.length >= 1) {
       await this.canjearBoletos(boletosCupon, cuponValido);
     }
     if (boletosPago.length >= 1) {
-      await this.pagar(boletosPago, total);
+      await this.pagar(boletosPago, total, boletosCupon);
     }
 
     if (boletosCupon.length >= 1 || boletosPago.length >= 1) {

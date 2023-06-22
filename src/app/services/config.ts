@@ -1,1 +1,1 @@
-export var api: string = 'https://sefemex.com/APISorteos/';
+export var api: string = 'https://luckyiphone.com/APISorteos/';

@@ -1,6 +1,6 @@
 {
-  "/APImubochi": {
-    "target": "https://sefemex.com",
+  "/APIsorteos": {
+    "target": "https://luckyiphone.com",
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true

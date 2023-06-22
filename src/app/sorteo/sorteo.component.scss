@@ -10,6 +10,9 @@
     padding-bottom: 20px;
     background: #383798;
     text-align: center;
+    max-width: 576px;
+    right: 0px;
+    margin: auto;
     // .regresar {
     //   float: left;
     //   font-size: 15px;
@@ -40,13 +43,16 @@
       position: absolute;
       top: 80px;
       left: 0px;
+      max-width: 580px;
+      right: 0px;
+      margin: auto;
     }
   }
   footer {
     float: left;
     width: 100%;
     padding: 40px 0px;
-    position: fixed;
+    position: relative;
     bottom: 0px;
     left: 0px;
     z-index: 100;
@@ -62,6 +68,9 @@
       position: absolute;
       top: -15px;
       left: 0px;
+      max-width: 580px;
+      right: 0px;
+      margin: auto;
     }
   }
   .divider {
@@ -72,7 +81,6 @@
   }
 
   .box_container {
-    float: left;
     width: 100%;
     position: relative;
     box-sizing: border-box;
@@ -207,12 +215,13 @@
         padding: 30px 30px;
         float: left;
         width: 100%;
-        .from-group {
+        .form-group {
           float: left;
           width: 100%;
           border: none;
           margin-bottom: 25px;
-          input {
+          input,
+          select {
             text-align: center;
             font-size: 18px;
           }
@@ -237,7 +246,6 @@
       float: left;
       width: 100%;
       padding-top: 40px;
-      padding-bottom: 120px;
       .box_sorteo_cupon {
         float: left;
         width: 100%;

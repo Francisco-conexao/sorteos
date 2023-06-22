@@ -93,14 +93,13 @@
 
       <form #form="ngForm" class="datosCliente">
         <span class="label_input">¿Tienes Algún Cupón?</span>
-        <div class="from-group">
+        <div class="form-group">
           <input
             class="form-control"
             type="text"
             [(ngModel)]="cupon"
             name="cupon"
             placeholder="Cupon"
-            required
           />
           <span class="info_input_cupon"
             >Si tienes algún cupón debes ingresarlo ahora. En caso de no tenerlo
@@ -108,12 +107,12 @@
           >
         </div>
         <span class="label_input">Ingresa tu número de whatsapp</span>
-        <div class="from-group">
+        <div class="form-group">
           <input
             class="form-control"
             type="text"
-            [(ngModel)]="whastapp"
-            name="whastapp"
+            [(ngModel)]="cliente.celular"
+            name="celular"
             placeholder="Whastapp"
             maxlength="10"
             minlength="10"
@@ -125,9 +124,77 @@
             seguimiento a tu pedido.</span
           >
         </div>
+        <div class="form-group">
+          <span class="label_input">Ingresa tu nombre</span>
+          <input
+            class="form-control"
+            type="text"
+            [(ngModel)]="cliente.nombre"
+            name="nombre"
+            placeholder="Nombre completo"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <span class="label_input">Ingresa tu email</span>
+          <input
+            class="form-control"
+            type="email"
+            [(ngModel)]="cliente.correo"
+            name="correo"
+            placeholder="Email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <span class="label_input">Ingresa tu estado</span>
+          <select
+            class="form-control"
+            [(ngModel)]="cliente.estado"
+            name="estado"
+            placeholder="Estado"
+            required
+          >
+            <option disabled selected>SELECCIONA ESTADO</option>
+            <option value="ESTADOS UNIDOS">ESTADOS UNIDOS</option>
+            <option value="OTRO PAIS">OTRO PAIS</option>
+            <option value="AGUASCALIENTES">AGUASCALIENTES</option>
+            <option value="BAJA CALIFORNIA">BAJA CALIFORNIA</option>
+            <option value="BAJA CALIFORNIA SUR">BAJA CALIFORNIA SUR</option>
+            <option value="CAMPECHE">CAMPECHE</option>
+            <option value="CIUDAD DE MÉXICO">CIUDAD DE MÉXICO</option>
+            <option value="COAHUILA">COAHUILA</option>
+            <option value="COLIMA">COLIMA</option>
+            <option value="CHIAPAS">CHIAPAS</option>
+            <option value="CHIHUAHUA">CHIHUAHUA</option>
+            <option value="DURANGO">DURANGO</option>
+            <option value="ESTADO DE MÉXICO">ESTADO DE MÉXICO</option>
+            <option value="GUANAJUATO">GUANAJUATO</option>
+            <option value="GUERRERO">GUERRERO</option>
+            <option value="HIDALGO">HIDALGO</option>
+            <option value="JALISCO">JALISCO</option>
+            <option value="MICHOACÁN">MICHOACÁN</option>
+            <option value="MORELOS">MORELOS</option>
+            <option value="NAYARIT">NAYARIT</option>
+            <option value="NUEVO LEÓN">NUEVO LEÓN</option>
+            <option value="OAXACA">OAXACA</option>
+            <option value="PUEBLA">PUEBLA</option>
+            <option value="QUERÉTARO">QUERÉTARO</option>
+            <option value="QUINTANA ROO">QUINTANA ROO</option>
+            <option value="SAN LUIS POTOSÍ">SAN LUIS POTOSÍ</option>
+            <option value="SINALOA">SINALOA</option>
+            <option value="SONORA">SONORA</option>
+            <option value="TABASCO">TABASCO</option>
+            <option value="TAMAULIPAS">TAMAULIPAS</option>
+            <option value="TLAXCALA">TLAXCALA</option>
+            <option value="VERACRUZ">VERACRUZ</option>
+            <option value="YUCATÁN">YUCATÁN</option>
+            <option value="ZACATECAS">ZACATECAS</option>
+          </select>
+        </div>
         <button
           class="btn btn_continuar"
-          (click)="ValidarCupon()"
+          (click)="validarCupon()"
           [disabled]="!form.valid"
         >
           Continuar <img src="assets/icons/flecha.png" />
