@@ -37,6 +37,9 @@
           >
             <img class="card-img-top" [src]="sorteo.img" />
             <span class="sorteo_name">{{ sorteo.nombre }}</span>
+            <span class="fecha_fin"
+              >Fecha de cierre: {{ sorteo.fecha_fin }}</span
+            >
             <button class="btn btn-primary" (click)="selecSorteo(sorteo)">
               Adquiere tus Boletos
             </button>
